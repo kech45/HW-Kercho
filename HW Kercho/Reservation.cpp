@@ -2,6 +2,7 @@
 #include "Reservation.h"
 
 
+//Zad2 HotelManagementSystem
 void Reservation::copy(const Reservation& other) {
 		this->id = other.id;
 		this->guest = other.guest;

@@ -2,6 +2,7 @@
 #include <functional>
 #include "UniqueVector.h"
 
+
 //zad1 UniqueVector
 template <typename T>
 void UniqueVector<T>::copy(const T* arr, int size)

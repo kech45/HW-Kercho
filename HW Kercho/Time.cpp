@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Time.h"
 
+
+//Zad2 HotelManagementSystem
 void Time::setTime(int y, int mo, int d, int h, int mi, int s) {
 	year = y;
 	if (mo > 0 && mo < 13) { month = mo; }

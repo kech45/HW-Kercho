@@ -2,6 +2,7 @@
 #include "Customer.h"
 
 
+//Zad2 HotelManagementSystem
 void Customer::copy(const Customer& other) {
 		_name = new char[strlen(other._name) + 1];
 		strcpy(_name, other._name);

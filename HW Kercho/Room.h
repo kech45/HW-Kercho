@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 
+
 class Room {
 private:
 	int _room;

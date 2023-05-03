@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Room.h"
 
+
+//Zad2 HotelManagementSystem
 void Room::copy(const Room& other) {
 		_room = other._room;
 		_type = new char[strlen(other._type) + 1];

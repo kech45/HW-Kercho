@@ -6,6 +6,7 @@
 #include "UniqueVector.h"
 #include "Time.h"
 
+
 class Hotel {
 private:
 	UniqueVector<Room> rooms;
@@ -16,6 +17,7 @@ public:
 	Hotel();
 	Hotel(const Hotel& other);
 	Hotel(int roomCap, int resCap);
+	~Hotel();
 	void addRoom(const Room& other);
 	void addReservation(const Reservation& other);
 	void removeReservation(int n);

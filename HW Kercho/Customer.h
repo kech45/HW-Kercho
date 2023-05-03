@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 
+
 class Customer {
 private:
 	char* _name;

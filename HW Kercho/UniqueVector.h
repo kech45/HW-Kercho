@@ -1,6 +1,8 @@
 #pragma once
 #include <functional>
 #include <iostream>
+
+
 template <typename T>
 class UniqueVector
 {
