@@ -11,17 +11,17 @@ private:
 	int _size = 0;
 	int _capacity;
 	void copy(const T* arr, int size);
-	void setCapacity(int capacity);
 	void resize();
 	void destroy();
 	bool repeat(const T& other);
 
 public:
-	const int  getCapacity()const;
+	const int getCapacity()const;
 	const int getSize()const;
 	UniqueVector<T>& operator=(const UniqueVector<T>& other);
 	UniqueVector();
 	UniqueVector(int n);
+	void setCapacity(int capacity);
 	UniqueVector(const UniqueVector<T>& other);
 	~UniqueVector();
 	void addNewElem(const T& other);

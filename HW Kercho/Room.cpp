@@ -11,10 +11,11 @@ void Room::copy(const Room& other) {
 		strcpy(_desc, other._desc);
 	}
 
-void Room::destroy() {
-		if(_desc != nullptr ) { delete[]this->_desc; }
-		if (_type != nullptr) { delete[]this->_type; }
-	}
+void Room::destroy() 
+{
+	delete[]this->_desc; 
+	delete[]this->_type; 
+}
 
 void Room::setRoomNumber(int n) {
 		_room = n;
@@ -31,7 +32,6 @@ void Room::setDesc(char* desc) {
 	}
 
 Room::Room() {
-	std::cout << "ROom constructor" << std::endl;
 		_room = 0;
 		_type = new char[1];
 		_type[0] = '\0';
@@ -61,11 +61,11 @@ const char* Room::getDesc()const { return _desc; }
 
 const int Room::getPrice()const {
 	int n = 0;
-		if (_type == "Single")
+		if (strcmp(_type, "Single")==0)
 		{
 			n = 45;
 		}
-		else if (_type == "Double")
+		else if (strcmp(_type, "Double") == 0)
 		{
 			n = 65;
 		}

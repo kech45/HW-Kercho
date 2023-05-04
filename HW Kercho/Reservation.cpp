@@ -76,7 +76,7 @@ bool Reservation::operator==(const Reservation& other) {
 	}
 
 std::ostream& operator <<(std::ostream& os, const Reservation& obj) {
-	os << "Id:" << obj.getId() << "\n"
+	os	<< "Id:" << obj.getId()  << "\n"
 		<< "Room info: " << "\n"
 		<< "Room number: " << obj.room.getRoom() << "\n"
 		<< "Room Description: " << obj.room.getDesc() << "\n"

@@ -150,12 +150,12 @@ Time Time::operator-(const Time& other) {
 
 int Time::ConvertTimeintoDays()const {
 	int days = 0;
-	days += this->second / 86400;
-	days += this->minute / 1440;
-	days += this->hour / 24;
-	days += this->day;
+	days += this->year*365;
 	days += this->month * 30;
-	days += this->year * 365;
+	days += this->day;
+	days += this->hour / 24;
+	days += this->minute / 1440;
+	days += this->second / 1440 * 24;
 	return days;
 }
 

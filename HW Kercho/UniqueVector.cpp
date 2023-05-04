@@ -171,7 +171,6 @@ void UniqueVector<T>::removeElemByIndex(int index)
 			count++;
 		}
 	}
-	delete[] _elements;
 	_elements = newElements;
 	_size--;
 }

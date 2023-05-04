@@ -12,10 +12,10 @@ private:
 	void copy(const Hotel& other);
 	void destroy();
 public:
-	const int getRooms()const { return rooms.getSize(); }
-	const int getReservations()const { return reservations.getSize(); }
-	const int getRoomsCap()const { return rooms.getCapacity(); }
-	const int getReservationsCap()const { return rooms.getCapacity(); }
+	const int getRooms()const;
+	const int getReservations()const; 
+	const int getRoomsCap()const; 
+	const int getReservationsCap()const; 
 	Hotel();
 	Hotel(const Hotel& other);
 	Hotel(int roomCap, int resCap);
@@ -26,6 +26,6 @@ public:
 	const bool isRoomFreeToRes(const Time& begin, const Time& end, int roomNum);
 	void freeRoomsInPeriod(const Time& begin, const Time& end);
 	const int ProfitsUntilDate(const Time& date);
-	void reservationsMadeByGuest(std::ostream& os, const char* name);
+	void reservationsMadeByGuest(const char* name);
 	friend std::ostream& operator <<(std::ostream& os, const Hotel& obj);
 };

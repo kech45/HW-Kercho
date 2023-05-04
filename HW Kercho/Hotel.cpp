@@ -15,8 +15,8 @@ void Hotel::destroy() {
 }
 
 Hotel::Hotel() {
-	this->rooms = UniqueVector<Room>();
-	this->reservations = UniqueVector<Reservation>();
+	this->rooms = *(new UniqueVector<Room>());
+	this->reservations = *(new UniqueVector<Reservation>());
 }
 
 Hotel::Hotel(const Hotel& other) {
@@ -24,13 +24,23 @@ Hotel::Hotel(const Hotel& other) {
 }
 
 Hotel::Hotel(int roomCap, int resCap) {
-	rooms = UniqueVector<Room>(roomCap);
-	reservations = UniqueVector<Reservation>(resCap);
+	rooms.setCapacity(roomCap);
+	reservations.setCapacity(resCap);
+	rooms = *(new UniqueVector<Room>(roomCap));
+	reservations = *(new UniqueVector<Reservation>(resCap));
 }
 
 Hotel::~Hotel() {
 	destroy();
 }
+
+const int Hotel::getRooms()const { return rooms.getSize(); }
+
+const int Hotel::getReservations()const { return reservations.getSize(); }
+
+const int Hotel::getRoomsCap()const { return rooms.getCapacity(); }
+
+const int Hotel::getReservationsCap()const { return rooms.getCapacity(); }
 
 void Hotel::addRoom(const Room& other) {
 	rooms.addNewElem(other);
@@ -53,7 +63,7 @@ void Hotel::removeReservation(int n) {
 }
 
 const bool Hotel::isRoomFreeToRes(const Time& begin, const Time& end, int roomNum) {
-	for (int i = 0; i < reservations.getCapacity(); i++)
+	for (int i = 0; i < reservations.getSize(); i++)
 	{
 		if (reservations[i].getRoomNum() == roomNum) {
 			return reservations[i].isFreeToRes(begin, end);
@@ -63,7 +73,7 @@ const bool Hotel::isRoomFreeToRes(const Time& begin, const Time& end, int roomNu
 }
 
 void Hotel::freeRoomsInPeriod(const Time& begin, const Time& end) {
-	for (int i = 0; i < reservations.getCapacity(); i++)
+	for (int i = 0; i < reservations.getSize(); i++)
 	{
 		if (reservations[i].isFreeToRes(begin, end)) {
 			std::cout << "Room: " << reservations[i].getRoomNum() << " is free" << std::endl;
@@ -82,11 +92,12 @@ const int Hotel::ProfitsUntilDate(const Time& date) {
 	return sum;
 }
 
-void Hotel::reservationsMadeByGuest(std::ostream& os, const char* name) {
+void Hotel::reservationsMadeByGuest(const char* name) {
 	for (int i = 0; i < reservations.getSize(); i++)
 	{
-		if (reservations[i].getName() == name) {
-			std::cout << reservations[i] << std::endl;
+		if (*reservations[i].getName() == *name) {
+			std::cout << reservations[i].getName() << "'s reservations:" <<"\n" 
+					  << reservations[i] << std::endl;
 		}
 	}
 }
@@ -99,7 +110,8 @@ std::ostream& operator <<(std::ostream& os, const Hotel& obj)
 	{
 		os << obj.rooms[i] << "\n";
 	}
-	os << "----------------------------------------------";
+	os << "\n";
+	os << "----------------------------------------------" << "\n";
 
 	os << "Reservations: " << "\n";
 
