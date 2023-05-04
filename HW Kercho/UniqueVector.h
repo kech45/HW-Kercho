@@ -8,7 +8,7 @@ class UniqueVector
 {
 private:
 	T* _elements;
-	int _size;
+	int _size = 0;
 	int _capacity;
 	void copy(const T* arr, int size);
 	void setCapacity(int capacity);
@@ -19,7 +19,7 @@ private:
 public:
 	const int  getCapacity()const;
 	const int getSize()const;
-	UniqueVector& operator=(const UniqueVector& other);
+	UniqueVector<T>& operator=(const UniqueVector<T>& other);
 	UniqueVector();
 	UniqueVector(int n);
 	UniqueVector(const UniqueVector<T>& other);
@@ -30,8 +30,8 @@ public:
 	void reverse();
 	T& operator[](int index);
 	const T& operator[](int index) const;
+	bool operator !=(const UniqueVector<T>& other)const;
 	friend std::ostream& operator<<(std::ostream& os, const UniqueVector<T>& object);
-
 	template<typename U>
 	UniqueVector<U> map(std::function<U(const T&)> mapper);
 	UniqueVector<T> filter(std::function<bool(const T&)> predicate);

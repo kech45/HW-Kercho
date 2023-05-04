@@ -29,7 +29,7 @@ public:
 	friend std::ostream& operator <<(std::ostream& os, const Time& obj);
 	const bool operator <(const Time& other)const;
 	const bool operator ==(const Time& other)const;
-	Time& operator-(const Time& other);
+	Time operator-(const Time& other);
 	int ConvertTimeintoDays()const;
 	void setCurrentTime();
 };

@@ -12,10 +12,8 @@ void Room::copy(const Room& other) {
 	}
 
 void Room::destroy() {
-		delete[]this->_desc;
-		this->_desc = nullptr;
-		delete[]this->_type;
-		this->_type = nullptr;
+		if(_desc != nullptr ) { delete[]this->_desc; }
+		if (_type != nullptr) { delete[]this->_type; }
 	}
 
 void Room::setRoomNumber(int n) {
@@ -33,6 +31,7 @@ void Room::setDesc(char* desc) {
 	}
 
 Room::Room() {
+	std::cout << "ROom constructor" << std::endl;
 		_room = 0;
 		_type = new char[1];
 		_type[0] = '\0';
@@ -60,7 +59,8 @@ const char* Room::getType()const { return _type; }
 
 const char* Room::getDesc()const { return _desc; }
 
-const int Room::getPrice(int n=0)const {
+const int Room::getPrice()const {
+	int n = 0;
 		if (_type == "Single")
 		{
 			n = 45;
@@ -85,16 +85,16 @@ bool Room::operator==(const Room& other) {
 
 Room& Room::operator =(const Room& other) {
 		if (this != &other) {
-			this->destroy();
+			
 			copy(other);
 		}
 		return *this;
 	}
 
 std::ostream& operator <<(std::ostream& os, const Room& obj) {
-		os << "Room Number: " << obj._room
-			<< "Type: " << obj._type
-			<< "Description: " << obj._desc;
+	os << "Room Number: " << obj._room << "\n"
+		<< "Type: " << obj._type << "\n"
+		<< "Description: " << obj._desc << "\n";
 		return os;
 	}
 

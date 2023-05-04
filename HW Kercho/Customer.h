@@ -11,7 +11,7 @@ private:
 	void destroy();
 	void setName(char* n);
 	void setAddress(char* a);
-	void setNum(const char* tn);
+	void setNum(char* tn);
 public:
 	Customer();
 	Customer(const Customer& other);

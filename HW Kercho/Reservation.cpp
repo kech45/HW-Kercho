@@ -8,6 +8,7 @@ void Reservation::copy(const Reservation& other) {
 		this->guest = other.guest;
 		this->resBegin = other.resBegin;
 		this->resEnd = other.resEnd;
+		this->room = other.room;
 	}
 
 void Reservation::setId(int n) {
@@ -30,6 +31,8 @@ const char* Reservation::getAddress() const { return guest.getAddress(); }
 
 const char* Reservation::getTelNumber() const { return guest.getNum(); }
 
+const Room Reservation::getRoom()const { return this->room; }
+
 Reservation::Reservation() {
 		id = 0;
 	}
@@ -48,7 +51,6 @@ Reservation::Reservation(int n, Customer g, Room r, Time b, Time e) {
 
 Reservation& Reservation:: operator =(const Reservation& other) {
 		if (this != &other) {
-			delete[]this;
 			copy(other);
 		}
 		return *this;
@@ -70,14 +72,20 @@ bool Reservation::operator==(const Reservation& other) {
 			std::cout << "The reservations are the same";
 			return true;
 		}
-		std::cout << "The reservations are not the same";
 		return false;
 	}
 
 std::ostream& operator <<(std::ostream& os, const Reservation& obj) {
-		os << "Room info: " << obj.room
-			<< "Reservation period: " << obj.resBegin << obj.resEnd
-			<< "Guest info: " << obj.guest << "Id: " << obj.id;
+	os << "Id:" << obj.getId() << "\n"
+		<< "Room info: " << "\n"
+		<< "Room number: " << obj.room.getRoom() << "\n"
+		<< "Room Description: " << obj.room.getDesc() << "\n"
+		<< "Room Type: " << obj.room.getType() << "\n"
+		<< "Reservation period: " << "\n"
+		<< "Start: " << obj.resBegin << "\n"
+		<< "Until: " << obj.resEnd << "\n"
+		<< "Guest info: "<< "\n" 
+		<< obj.guest << "\n" << std::endl;
 
 		return os;
 	}

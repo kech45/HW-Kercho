@@ -13,7 +13,7 @@ void Time::setTime(int y, int mo, int d, int h, int mi, int s) {
 	else { throw std::exception{ "invalid time" }; }
 	if (mi >= 0 && mi < 60) { minute = mi; }
 	else { throw std::exception{ "invalid time" }; }
-	if (s > 0 && s < 60) { second = d; }
+	if (s >= 0 && s < 60) { second = s; }
 	else { throw std::exception{ "invalid time" }; }
 }
 
@@ -81,10 +81,11 @@ const int Time::getMinute()const { return minute; }
 const int Time::getSecond()const { return second; }
 
 std::ostream& operator <<(std::ostream& os, const Time& obj) {
-	os << "Year: " << obj.year << "Month: " << obj.month << "Day: " << obj.day
-		<< "Time: " << obj.hour << ':'
+	os << " Year: " << obj.year << " Month: " << obj.month << " Day: " << obj.day
+		<< " Time: " << obj.hour << ':'
 		<< obj.minute << ':'
 		<< obj.second;
+	return os;
 }
 
 const bool Time::operator <(const Time& other)const {
@@ -115,8 +116,7 @@ const bool Time::operator ==(const Time& other)const {
 	return false;
 }
 
-Time& Time::operator-(const Time& other) {
-	Time result;
+Time Time::operator-(const Time& other) {
 	int y = year - other.year;
 	int mo = month - other.month;
 	int d = day - other.day;
@@ -143,8 +143,9 @@ Time& Time::operator-(const Time& other) {
 		mo += 12;
 		y--;
 	}
+	
 
-	return result;
+	return Time(y,mo,d,h,mi,s);
 }
 
 int Time::ConvertTimeintoDays()const {

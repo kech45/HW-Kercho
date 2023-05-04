@@ -20,7 +20,7 @@ public:
 	const int getRoom()const;
 	const char* getType()const;
 	const char* getDesc()const;
-	const int getPrice(int n=0)const;
+	const int getPrice()const;
 	bool operator==(const Room& other);
 	Room& operator =(const Room& other);
 	friend std::ostream& operator <<(std::ostream& os, const Room& obj);

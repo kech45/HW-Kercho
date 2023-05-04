@@ -32,10 +32,11 @@ void Customer::setAddress(char* a) {
 		strcpy(_address, a);
 	}
 
-void Customer::setNum(const char* tn) {
-		if (tn[0] != '0' || tn[1] != '1' || strlen(tn) > 10) {
-			throw new std::exception("Number is invalid");
+void Customer::setNum(char* tn) {
+		if (tn[0] != '0' || tn[1] != '8' || strlen(tn) > 10) {
+			throw ("Number is invalid");
 		}
+		_telNum = new char[strlen(tn) + 1];
 		strcpy(_telNum, tn);
 	}
 
@@ -77,15 +78,15 @@ bool Customer::operator==(const Customer& other) {
 
 Customer& Customer::operator =(const Customer& other) {
 		if (this != &other) {
-			this->destroy();
 			copy(other);
 		}
 		return *this;
 	}
 
 std::ostream& operator <<(std::ostream& os, const Customer& obj) {
-		os << "Name: " << obj._name
-			<< "Address: " << obj._address
-			<< "Telephone number: " << obj._telNum;
+	os  << "Name: " << obj.getName() << "\n"
+		<< "Address: " << obj.getAddress() << "\n"
+		<< "Telephone number: " << obj.getNum() << "\n";
+		return os;
 	}
 

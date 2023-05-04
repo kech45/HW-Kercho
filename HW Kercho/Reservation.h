@@ -23,6 +23,7 @@ public:
 	const char* getName() const;
 	const char* getAddress() const;
 	const char* getTelNumber() const;
+	const Room getRoom()const;
 	Reservation();
 	Reservation(const Reservation& other);
 	Reservation(int n, Customer g, Room r, Time b, Time e);
@@ -31,5 +32,4 @@ public:
 	const bool isFreeToRes(Time otherBegin, Time otherEnd);
 	bool operator==(const Reservation& other);
 	friend std::ostream& operator <<(std::ostream& os, const Reservation& obj);
-
 };
