@@ -11,9 +11,17 @@ void Reservation::copy(const Reservation& other) {
 		this->room = other.room;
 	}
 
-void Reservation::setId(int n) {
+void Reservation::setId(int n) 
+{
+	if (n > 0) 
+	{
 		id = n;
 	}
+	else 
+	{
+		throw std::exception("Invalid ID"); 
+	}
+}
 
 const int Reservation::getRoomNum() const { return room.getRoom(); }
 

@@ -24,8 +24,6 @@ Hotel::Hotel(const Hotel& other) {
 }
 
 Hotel::Hotel(int roomCap, int resCap) {
-	rooms.setCapacity(roomCap);
-	reservations.setCapacity(resCap);
 	rooms = *(new UniqueVector<Room>(roomCap));
 	reservations = *(new UniqueVector<Reservation>(resCap));
 }
@@ -95,11 +93,18 @@ const int Hotel::ProfitsUntilDate(const Time& date) {
 void Hotel::reservationsMadeByGuest(const char* name) {
 	for (int i = 0; i < reservations.getSize(); i++)
 	{
-		if (*reservations[i].getName() == *name) {
+		if (strcmp(reservations[i].getName(), name)==0) {
 			std::cout << reservations[i].getName() << "'s reservations:" <<"\n" 
 					  << reservations[i] << std::endl;
 		}
+
+		else 
+		{
+			std::cout << "\n";
+			std::cout << name << "  guest doesn't have resevation number: " << reservations[i].getId() << std::endl;
+		}
 	}
+	
 }
 
 std::ostream& operator <<(std::ostream& os, const Hotel& obj)

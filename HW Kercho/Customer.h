@@ -9,9 +9,9 @@ private:
 	char* _telNum;
 	void copy(const Customer& other);
 	void destroy();
-	void setName(char* n);
-	void setAddress(char* a);
-	void setNum(char* tn);
+	void setName(const char* n);
+	void setAddress(const char* a);
+	void setNum(const char* tn);
 public:
 	Customer();
 	Customer(const Customer& other);

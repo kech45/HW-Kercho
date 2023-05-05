@@ -58,7 +58,7 @@ int main() {
 
 	std::cout << "---------------------------------------------------------------" << std::endl;
 
-	std::cout << std::boolalpha<<Hotel1->isRoomFreeToRes(Time(2022, 1, 1, 1, 1, 1), Time(2025, 4, 4, 4, 4, 4), 104);
+	std::cout << std::boolalpha << Hotel1->isRoomFreeToRes(Time(2022, 1, 1, 1, 1, 1), Time(2025, 4, 4, 4, 4, 4), 104) << std::endl;
 
 	std::cout << "---------------------------------------------------------------" << std::endl;
 
@@ -66,7 +66,7 @@ int main() {
 
 	std::cout << "---------------------------------------------------------------" << std::endl;
 
-	Hotel1->reservationsMadeByGuest(Name1);
+	Hotel1->reservationsMadeByGuest("John");
 
 	std::cout << "---------------------------------------------------------------" << std::endl;
 

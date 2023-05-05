@@ -94,9 +94,8 @@ UniqueVector<T>& UniqueVector<T>::operator=(const UniqueVector<T>& other)
 
 template <typename T>
 UniqueVector<T>::UniqueVector() {
-	_capacity = 0;
+	_capacity = 20;
 	_elements = nullptr;
-	
 }
 
 template <typename T>

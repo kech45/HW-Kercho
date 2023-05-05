@@ -17,9 +17,17 @@ void Room::destroy()
 	delete[]this->_type; 
 }
 
-void Room::setRoomNumber(int n) {
+void Room::setRoomNumber(int n) 
+{
+	if (n > 0)
+	{
 		_room = n;
 	}
+	else 
+	{
+		throw std::exception("Wrong room number selected");
+	}
+}
 
 void Room::setType(char* type) {
 		_type = new char[strlen(type) + 1];
@@ -69,7 +77,7 @@ const int Room::getPrice()const {
 		{
 			n = 65;
 		}
-		else
+		else if(strcmp(_type, "Suite")==0)
 		{
 			n = 90;
 		}
